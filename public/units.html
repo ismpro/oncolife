@@ -1,0 +1,257 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Oncolife_Criar_Conta</title>
+    <link rel="stylesheet" href="/stylesheets/units.css">
+  </head>
+
+  <body>
+    <header class="box">
+        <a href="index.html">
+      <img src="images/oncolife.png" alt="Oncolife Logo"></a>
+      <section>
+          <h1> Bem-vindo à Oncolife </h1>
+          <h3 style="color: black;"> CRIAR CONTA </h3>
+      </section>
+    </header>
+
+    <main>
+    <section>
+      <p>Olá!</p>
+      <p>Se chegou até aqui, é porque ainda não tem conta, siga todos os passos de forma a dar uma maior e melhor utilidade a esta plataforma!</p>
+    </section>
+     <p></p>
+      <!--Dados do paciente-->
+      <form>
+      <fieldset>
+          <legend>1º Passo: Preencha os dados do paciente</legend>
+          <table cellspacing="10">
+              <tr>
+                <td>
+                    <label for="nome">Nome:</label></td>
+                    <td><input type="text" name="nome"></td>
+                <td>
+                    <label for="Sobrenome">Sobrenome:</label></td>
+                    <td><input type="text" name="sobrenome"></td>  
+              </tr>
+              <tr>
+                <td>
+                    <label for="data de nascimento">Data de nascimento:</label></td>
+                    <td><input type="date" id="data" name="data"></td>
+              </tr>
+              <tr>
+                  <td>
+                    <label for="idade">Idade:</label>
+                    <input type="text" size="2" maxlength="3">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <label for="altura">Altura (cm):</label>
+                    <input type="text" size="3" maxlength="3">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                     <label for="peso">Peso (kg):</label>
+                     <input type="text" size="5" maxlength="3" value="ex:60kg"> 
+                  </td>
+              </tr>
+              <tr>
+                  <td> 
+                    <label for="tipo de cancro">Tipo de cancro:</label></td>
+                  <td>
+                      <select name="tipo de cancro">
+                        <option value="selecione">-selecione um-</option>
+                        <option value="endo endocrino">Endo endocrino</option>
+                        <option value="pulmao">Pulmão</option>
+                        <option value="pancreas">Pâncreas</option>
+                        <option value="mama">Mama</option>
+                        <option value="tiroide">Tiróide</option>
+                        <option value="prostata">Próstata</option>
+                        <option value="leucemia">Leucemia</option>
+                        <option value="intestino delgado">Instetino Delgado</option>
+                        <option value="pele">Pele</option>
+                        <option value="colo do utero">Colo do utero</option>
+                        <option value="Linfoma">Linfoma Folicular Agressivo</option>
+                        <option value="conlon e reto">Colon e reto</option>
+                        <option value="estomago">Estômago</option>
+                        <option value="cerebro">Cérebro</option>
+                        <option value="bexiga">Bexiga</option>
+                        <option value="ovarios">Ovários</option>
+                        <option value="outro">Outro</option>
+                      </select>                  
+                    </td>
+                  <td>
+                      <label for="outro">Outros:</label></td>
+                      <td><input type="text" name="tipo de cancro"></td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="estagio">Estágio:</label></td>
+                  <td>
+                      <select name="estagio">
+                          <option value="selecione">-selecione um-</option>
+                          <option value="1">Estágio 1</option>
+                          <option value="2">Estágio 2</option>
+                          <option value="3">Estágio 3</option>
+                          <option value="4">Estágio 4</option>
+                      </select>
+                  </td>    
+              </tr>
+              <tr>
+                  <td>
+                      <label for="tipo de tratamento">Tipo de tratamento:</label></td>
+                  <td><input type="text" name="tipo de tratamento"></td>
+                  <td>
+                      <label for="tipo de tratamento 2">2ºTipo de tratamento:</label></td>
+                  <td><input type="text" name="tipo de tratamento 2"></td>         
+              </tr>
+          </table>
+      </fieldset>
+<!--Dados Médico-->
+     <p></p> 
+     <p></p>
+     <fieldset>
+          <legend>2º Passo: Preencha os dados do médico</legend>
+          <table cellspacing="10">
+              <tr>
+                  <td>
+                      <label for="nome">Nome:</label></td>
+                      <td><input type="text" name="nome"></td>
+                  <td>
+                      <label for="sobrenome">Sobrenome:</label></td>
+                      <td><input type="text" name="sobrenome"></td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="sexo">Sexo:</label></td>
+                  <td>
+                      <select name="sexo">
+                          <option value="selecione">-selecione um-</option>
+                          <option value="F">Feminino</option>
+                          <option value="M">Masculino</option>
+                          <option value="NA">Não específico</option>
+                      </select>
+                  </td>    
+              </tr>
+              <tr>
+                  <td>
+                      <label for="especialidade">Especialidade:</label></td>
+                  <td><input type="text" name="especialidade"></td>    
+              </tr>
+              <tr>
+                  <td>
+                      <label for="licença">Licença</label></td>
+                      <td><input type="number" name="licença" min="00000" max="99999" maxlength="5"></td>
+              </tr>
+          </table>
+      </fieldset>
+     
+<!--Dados Cuidador-->
+<p></p>
+<p></p>
+      <fieldset>
+          <legend>3ºPasso: Preencha os dados do cuidador (se aplicavél)</legend>
+          <table cellspacing="10">
+            <tr>
+                <td>
+                    <label for="nome">Nome:</label></td>
+                    <td><input type="text" name="nome"></td>
+                <td>
+                    <label for="sobrenome">Sobrenome:</label></td>
+                    <td><input type="text" name="sobrenome"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="sexo">Sexo:</label></td>
+                <td>
+                    <select name="sexo">
+                        <option value="selecione">-selecione um-</option>
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                        <option value="NA">Não específico</option>
+                    </select>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <label for="grau de parentesco">Grau de Parentesco</label>
+                </td>
+                <td>
+                    <select name="grau de parentesco">
+                        <option value="selecione">-selecione um-</option>
+                        <option value="mãe">Mãe</option>
+                        <option value="pai">Pai</option>
+                        <option value="avó">Avó</option>
+                        <option value="avô">Avô</option>
+                        <option value="filho">Filho</option>
+                        <option value="filha">Filha</option>
+                        <option value="marido">Marido</option>
+                        <option value="mulher">Mulher</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="outro grau">Outro:</label>
+                </td>
+                <td><input type="text" name="outro grau"></td>
+            </tr>
+          </table>
+      </fieldset>
+
+<!--Dados Login-->
+     <p></p>
+     <p></p> 
+     <fieldset>
+         <legend>4ºPasso: Preencha os dados do login</legend>
+          <table cellspacing="10">
+              <tr>
+                  <td>
+                      <label for="e-mail">E-mail:</label>
+                  </td>
+                  <td>
+                      <input type="email" name="e-mail">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="imagem">Foto de perfil:</label>
+                  </td>
+                  <td>
+                      <input type="file" name="imagem">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="login">Usuário:</label>
+                  </td>
+                  <td>
+                      <input type="text" name="login">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="password">Password:</label>
+                  </td>
+                  <td>
+                      <input type="password" name="password">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="confirmpass">Confirme a password:</label>                  
+                  </td>
+                  <td>
+                      <input type="password" name="confirmpass">
+                  </td>
+              </tr>
+          </table>
+      </fieldset>
+      <br/>
+      <input type="submit" value="Enviar Formulário">
+      <input type="reset" value="Limpar">
+    </form>  
+    </main>
+
+</body>
+</html>
