@@ -3,18 +3,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var pacienteRouter = require('./routes/pacienteroutes');
-var usersRouter = require('./routes/users');
-
+//Config
 var app = express();
+global.appRoot = path.resolve(__dirname);
+const sql = require('./app/connection')
 
+//Middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/paciente', pacienteRouter);
-app.use('/users', usersRouter);
+
+const Paciente = require('./app/models/Paciente')
+
+Paciente.getAll().then(data => {
+    console.log(data)
+});
+
+
+//Adding Routes
+require('./app/routes.js')(app)
 
 module.exports = app;

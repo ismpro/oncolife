@@ -6,7 +6,7 @@ var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'final_proj_onco'
+    database: 'onlife'
 });
 
 // Ping database to check for common exception errors.
