@@ -1,16 +1,13 @@
 const pool = require("../connection");
-const Pessoa = require("./Pessoas");
 
-class Paciente {
+class CancroPaciente {
 
     constructor(obj) {
         if (!obj)
             return
         this.id = obj.id
-        this.dnsc = obj.dnsc
-        this.peso = obj.peso
-        this.altura = obj.altura
-        this.pessoa = obj.pessoa
+        this.est = obj.est
+        this.tipo = obj.tipo
     }
 
     async save() {
@@ -18,18 +15,23 @@ class Paciente {
 
     }
 
-    static async getAllByMecId(id) {
-        let pacientes = []
+    static async getAllByPacId(id) {
+        let tratamentos = []
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
+                let query = await pool.query(`SELECT tp_cancro_pac_id"id", tp_cancro_pac_est"est", tp_cancro_pac_tp_cancro_id"tp_id" FROM Tipodecancropaciente WHERE tp_cancro_pac_pac_id = ${id}`);
 
-                const query = await pool.query(`SELECT pac_med_pac_id"id" FROM pacientemedico WHERE pac_med_med_id = ${id}`);
                 for (const element of query) {
-                    let query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = ${element.id}`);
-                    let pessoa = await Pessoa.getOneById(query[0].pes_id);
-                    pacientes.push(new Paciente({ ...query[0], pessoa: pessoa }))
+                    let tipoCancro = await pool.query(`SELECT tp_cancro_id"id", tp_cancro_diag"diag" FROM Tipo_de_cancro WHERE tp_cancro_id = ${element.tp_id}`);
+
+                    tratamentos.push(new CancroPaciente({
+                        ...element, tipo: {
+                            id: tipoCancro[0].id,
+                            diag: tipoCancro[0].diag
+                        }
+                    }))
                 }
-                return pacientes
+                return tratamentos
             } catch (err) {
                 console.log(err);
                 return { status: 500, data: err }
@@ -40,8 +42,7 @@ class Paciente {
         }
     }
 
-
-    static async getOneById(id) {
+    /* static async getOneById(id) {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
                 let query = await pool.query('SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = 1');
@@ -74,7 +75,7 @@ class Paciente {
         }
     }
 
-    /* static async updateOneById() {
+    static async updateOneById() {
         try {
             const sql = "SELECT * FROM PACIENTE";
             const paciente = await pool.query(sql);
@@ -98,4 +99,4 @@ class Paciente {
 }
 
 
-module.exports = Paciente;
+module.exports = CancroPaciente;

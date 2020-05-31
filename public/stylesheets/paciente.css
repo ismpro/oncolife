@@ -152,5 +152,14 @@ body {
 
 
     th {
-    color: rgb(43, 226, 217);
+      color: rgb(43, 226, 217);
+    }
+
+    .divider
+    {
+      margin-bottom: 15px;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
     }

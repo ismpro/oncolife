@@ -1,5 +1,5 @@
 const path = require('path')
-const Paciente = require('./models/Paciente')
+
 
 module.exports = function (app) {
 
@@ -7,11 +7,7 @@ module.exports = function (app) {
         res.status(200).sendFile(path.join(global.appRoot, 'public', 'index.html'))
     })
 
-    app.post('/api/paciente', function (req, res) {
-        Paciente.getAll().then((pacientes) => {
-            res.send(pacientes)
-        })
-    })
+    app.post('/api/pacientes', require('./routes/api/pacientes')())
 
     app.get('*', function (req, res) {
         res.status(404).send('Page Not Found');

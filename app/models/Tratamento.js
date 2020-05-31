@@ -1,16 +1,15 @@
 const pool = require("../connection");
-const Pessoa = require("./Pessoas");
 
-class Paciente {
+class Tratamento {
 
     constructor(obj) {
         if (!obj)
             return
         this.id = obj.id
-        this.dnsc = obj.dnsc
-        this.peso = obj.peso
-        this.altura = obj.altura
-        this.pessoa = obj.pessoa
+        this.uti = obj.uti
+        this.location = obj.location
+        this.medico = obj.medico
+        this.tipo = obj.tipo
     }
 
     async save() {
@@ -18,18 +17,23 @@ class Paciente {
 
     }
 
-    static async getAllByMecId(id) {
-        let pacientes = []
+    static async getAllByPacId(id) {
+        let tratamentos = []
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
+                let query = await pool.query(`SELECT trat_id"id", trat_uti"uti", trat_tp_trat_id"tp_id", trat_loc_id"loc_id", trat_pac_med_id"med_id" FROM Tratamento WHERE trat_pac_id = ${id}`);
 
-                const query = await pool.query(`SELECT pac_med_pac_id"id" FROM pacientemedico WHERE pac_med_med_id = ${id}`);
                 for (const element of query) {
-                    let query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = ${element.id}`);
-                    let pessoa = await Pessoa.getOneById(query[0].pes_id);
-                    pacientes.push(new Paciente({ ...query[0], pessoa: pessoa }))
+                    let tipoTratamento = await pool.query(`SELECT tp_trat_Id"id", tp_trat_nome"nome" FROM Tipo_de_Tratamento WHERE tp_trat_Id = ${element.tp_id}`);
+                    delete element.tp_id;
+                    tratamentos.push(new Tratamento({
+                        ...element, tipo: {
+                            id: tipoTratamento[0].id,
+                            nome: tipoTratamento[0].nome
+                        }
+                    }))
                 }
-                return pacientes
+                return tratamentos
             } catch (err) {
                 console.log(err);
                 return { status: 500, data: err }
@@ -40,8 +44,7 @@ class Paciente {
         }
     }
 
-
-    static async getOneById(id) {
+    /* static async getOneById(id) {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
                 let query = await pool.query('SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = 1');
@@ -74,7 +77,7 @@ class Paciente {
         }
     }
 
-    /* static async updateOneById() {
+    static async updateOneById() {
         try {
             const sql = "SELECT * FROM PACIENTE";
             const paciente = await pool.query(sql);
@@ -98,4 +101,4 @@ class Paciente {
 }
 
 
-module.exports = Paciente;
+module.exports = Tratamento;

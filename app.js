@@ -15,14 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-const Paciente = require('./app/models/Paciente')
-
-Paciente.getAll().then(data => {
-    console.log(data)
-});
-
-
 //Adding Routes
 require('./app/routes.js')(app)
 

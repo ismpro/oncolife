@@ -1,7 +1,7 @@
 window.onload = async function () {
 
     let data = await $.ajax({
-        url: "/api/paciente",
+        url: "/api/pacientes",
         method: "post",
         dataType: "json"
     })
@@ -10,7 +10,7 @@ window.onload = async function () {
     if (data && Array.isArray(data) && data.length > 0) {
 
         for (const element of data) {
-            console.log(element)
+            this.console.log(element)
             let tr = document.createElement("tr");
             let tdNome = document.createElement("td");
             let trSexo = document.createElement("td");
@@ -18,11 +18,25 @@ window.onload = async function () {
             let trTratamentos = document.createElement("td");
             let trMedicacao = document.createElement("td");
 
-            tdNome.innerHTML = element.pessoa.nome;
-            trSexo.innerHTML = element.pessoa.sexo === 'F' ? 'Feminino' : 'Masculino';
-            trPatolagia.innerHTML = 'Patologia'
-            trTratamentos.innerHTML = 'Tratamento'
-            trMedicacao.innerHTML = 'Medicação'
+            tdNome.innerHTML = element.nome;
+            trSexo.innerHTML = element.sexo === 'F' ? 'Feminino' : 'Masculino';
+            let htmlPat = ''
+            element.patologia.forEach((pat, index) => {
+                htmlPat += index > 0 ? `<div class="divider"></div> <p> ${pat}</p>` : `<p>${pat}</p>`
+            });
+
+            let htmlTrat = ''
+            element.tratamento.forEach((trat, index) => {
+                htmlTrat += index > 0 ? `<div class="divider"></div> <p> ${trat}</p>` : `<p>${trat}</p>`
+            });
+
+            let htmlMed = ''
+            element.medicacao.forEach((med, index) => {
+                htmlMed += index > 0 ? `<div class="divider"></div> <p> ${med}</p>` : `<p>${med}</p>`
+            });
+            trPatolagia.innerHTML = htmlPat;
+            trTratamentos.innerHTML = htmlTrat
+            trMedicacao.innerHTML = htmlMed
 
             tr.appendChild(tdNome);
             tr.appendChild(trSexo);

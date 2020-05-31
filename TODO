@@ -1,7 +1,7 @@
 Problemas:
-- Nome das Tabelas
+- Nome das Tabelas ---
 - Login ???
-- Tabela de pacientes nao tem dados sufientes
+- 
 - Varias tabela que não fazem sentido
 - 
 
@@ -9,3 +9,8 @@ TODO:
 - Classes de sql
 - Routes post
 - Melhorar css
+- Tabela de pacientes nao tem dados sufientes(Foi decidido que vai tirar campos no html)
+- Metodo save em tudos os modelos
+- location e medico no modelo tratamento
+- paciente na tabela no modelo Tipodecancropaciente
+- paciente na tabela no modelo Toma
