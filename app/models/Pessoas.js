@@ -12,8 +12,9 @@ class Pessoa {
         this.num_telm = obj.num_telm
     }
 
-    async save() {
-        console.log('saving')
+    async create() {
+        let pessoa = await pool.query(`INSERT INTO PESSOAS (pes_sexo, pes_nome, pes_idade, pes_num_telm) VALUES('${this.sexo}', '${this.nome}', '${this.idade}', '${this.num_telm}') `);
+        return pessoa.insertId
     }
 
     static async getOneById(id) {

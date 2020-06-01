@@ -13,9 +13,10 @@ class Paciente {
         this.pessoa = obj.pessoa
     }
 
-    async save() {
-        console.log('saving')
-
+    async create() {
+        let info = await pool.query(`INSERT INTO paciente (pac_dnsc, pac_peso, pac_altura, pac_pes_id) VALUES( str_to_date('${this.dnsc}','%Y/%m/%d'), '${this.peso}', '${this.altura}', '${this.pessoa}') `);
+        this.pessoa = await Pessoa.getOneById(this.pessoa)
+        return info.insertId
     }
 
     static async getAllByMecId(id) {
@@ -73,28 +74,6 @@ class Paciente {
             return { status: 500, data: err }
         }
     }
-
-    /* static async updateOneById() {
-        try {
-            const sql = "SELECT * FROM PACIENTE";
-            const paciente = await pool.query(sql);
-            return { status: 200, data: paciente };
-        } catch (err) {
-            console.log(err);
-            return { status: 500, data: err }
-        }
-    }
-
-    static async deleteOneById() {
-        try {
-            const sql = "SELECT * FROM PACIENTE";
-            const paciente = await pool.query(sql);
-            return { status: 200, data: paciente };
-        } catch (err) {
-            console.log(err);
-            return { status: 500, data: err }
-        }
-    } */
 }
 
 

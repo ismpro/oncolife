@@ -10,7 +10,6 @@ window.onload = async function () {
     if (data && Array.isArray(data) && data.length > 0) {
 
         for (const element of data) {
-            this.console.log(element)
             let tr = document.createElement("tr");
             let tdNome = document.createElement("td");
             let trSexo = document.createElement("td");

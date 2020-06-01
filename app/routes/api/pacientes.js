@@ -14,8 +14,8 @@ module.exports = function () {
                     nome: paciente.pessoa.nome,
                     sexo: paciente.pessoa.sexo,
                     patologia: data[0].map(pat => pat.tipo.diag),
-                    tratamento: data[1].map(tra => tra.tipo.nome),
-                    medicacao: data[2].map(tra => tra.mdc.nome)
+                    tratamento: data[1].map(tra => tra.tipo.diag),
+                    medicacao: data[2].map(med => med.mdc.nome)
                 })
             }
             res.send(alldata)
