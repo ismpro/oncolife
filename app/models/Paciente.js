@@ -45,7 +45,7 @@ class Paciente {
     static async getOneById(id) {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
-                let query = await pool.query('SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = 1');
+                let query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = ${id}`);
                 query = query[0]
                 let pessoa = await Pessoa.getOneById(query.pes_id);
                 let paciente = new Paciente({ pessoa: pessoa, ...query })

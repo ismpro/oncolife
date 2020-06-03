@@ -4,70 +4,61 @@
   <meta charset="UTF-8">
   <title>Paciente</title>
   <link rel="stylesheet" href="/stylesheets/paciente1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/javascripts/paciente.js"></script>
 </head>
 
 <body>
   <header class="box">
     <a href="/">
-      <img src="images/oncolife.png" alt="Oncolife Logo"></a>
+      <img src="/images/oncolife.png" alt="Oncolife Logo"></a>
     <section>
       <h1> Paciente </h1>
     </section>
   </header>
 
-  <nav id="nav">
-    <a href="marcacao.html" class="button1">Marcações</a>
-    <a href="sintomas.html" class="button1">Sintomas</a>
-    <a href="diario.html" class="button1">Diário</a>
-  </nav>
-
   <main>
     <table class="table1">
       <tr>
         <th>Nome</th>
-        <td>Gonçalo Ramos</td>
+        <td id="nome"></td>
       </tr>
       <tr>
         <th>Sexo</th>
-        <td>Masculino</td>
+        <td id="sexo"></td>
       </tr>
       <tr>
         <th>Data de nascimento</th>
-        <td>14/06/1975</td>
+        <td id="dtnc"></td>
       </tr>
       <tr>
         <th>Idade</th>
-        <td>44 anos</td>
+        <td id="idade"></td>
       </tr>
       <tr>
         <th>Altura</th>
-        <td>1,65m</td>
+        <td id="altura"></td>
       </tr>
       <tr>
         <th>Peso</th>
-        <td>79Kg</td>
+        <td id="peso"></td>
       </tr>
       <tr>
         <th>Tipo de cancro</th>
-        <td>Cancro da tiróide</td>
+        <td id="cancro"></td>
       </tr>
-      <tr>
+      <!-- <tr>
         <th>Estágio</th>
-        <td>1</td>
-      </tr>
+        <td id="est"></td>
+      </tr> -->
 
       <tr>
         <th>Tipo de tratamento</th>
-        <td>Radioterapia</td>
+        <td id="trat"></td>
       </tr>
-
-      <tr>
-        <th>Médico</th>
-        <td>José Antunes</td>
-      </tr>
-
     </table>
   </main>
+  <a style="font-size: large; margin-left: 230px; margin-top: 400px;" href="/paciente.html">Voltar</a>
 </body>
 
 </html>

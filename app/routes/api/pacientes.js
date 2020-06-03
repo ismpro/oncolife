@@ -11,6 +11,7 @@ module.exports = function () {
             for (const paciente of pacientes) {
                 let data = await Promise.all([CancroPaciente.getAllByPacId(paciente.id), Tratamento.getAllByPacId(paciente.id), Toma.getAllByPacId(paciente.id)])
                 alldata.push({
+                    id: paciente.id,
                     nome: paciente.pessoa.nome,
                     sexo: paciente.pessoa.sexo,
                     patologia: data[0].map(pat => pat.tipo.diag),
