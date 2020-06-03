@@ -1,4 +1,5 @@
-const path = require('path')
+const
+ path = require('path')
 
 module.exports = function (app) {
 
@@ -17,8 +18,6 @@ module.exports = function (app) {
     app.post('/api/npaciente', require('./routes/api/npaciente')())
 
     app.post('/api/npaciente/create', require('./routes/api/npaciente-create')())
-
-    app.get('/api/:id')
 
     app.get('*', function (req, res) {
         res.status(404).send('Page Not Found');

@@ -38,7 +38,6 @@ body {
       width:auto; height: 200px;
       background-color: white;
       position: relative;
-      
     }
   
   .box:after, .box:before{

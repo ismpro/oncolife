@@ -13,7 +13,7 @@ class Tratamento {
         this.paciente = obj.paciente
         this.medico = obj.medico || 5
         this.tipo = obj.tipo
-        
+
     }
 
     async create() {
@@ -31,7 +31,10 @@ class Tratamento {
                     let tipoTratamento = await TipoTratamento.getOneById(element.tp_id)
                     let local = await Local.getOneById(element.loc_id)
                     tratamentos.push(new Tratamento({
-                        ...element, tipo: tipoTratamento, local: local
+                        id: element.id,
+                        uti: element.uti,
+                        tipo: tipoTratamento,
+                        local: local
                     }))
                 }
                 return tratamentos

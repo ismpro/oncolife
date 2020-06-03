@@ -31,7 +31,12 @@ class Toma {
                 for (const element of query) {
                     let med = await Medicacao.getOneById(element.mdc_id)
                     tomas.push(new Toma({
-                        ...element, mdc: med
+                        id: element.id,
+                        nome_mdc: element.nome_mdc,
+                        hora: element.hora,
+                        hora_adm: element.hora_adm,
+                        mdc_id: 5,
+                        mdc: med
                     }))
                 }
                 return tomas
@@ -45,6 +50,5 @@ class Toma {
         }
     }
 }
-
 
 module.exports = Toma;

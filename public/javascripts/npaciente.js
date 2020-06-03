@@ -55,9 +55,9 @@ function novoPaciente(e) {
     let trat = document.getElementById('trat').value;
     let med = document.getElementById('med').value;
 
-    pat = tipocancro.find((ele) => pat === ele.diag)
-    trat = tipotratamento.find((ele) => trat === ele.diag)
-    med = medicacao.find((ele) => med === ele.nome)
+    pat = tipocancro.find(function (ele) { return pat === ele.diag })
+    trat = tipotratamento.find(function (ele) { return trat === ele.diag })
+    med = medicacao.find(function (ele) { return med === ele.nome })
 
     if (pat && trat && med && nome && gender) {
         $.ajax({

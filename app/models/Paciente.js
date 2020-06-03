@@ -14,7 +14,7 @@ class Paciente {
     }
 
     async create() {
-        let info = await pool.query(`INSERT INTO paciente (pac_dnsc, pac_peso, pac_altura, pac_pes_id) VALUES( str_to_date('${this.dnsc}','%Y/%m/%d'), '${this.peso}', '${this.altura}', '${this.pessoa}') `);
+        let info = await pool.query(`INSERT INTO paciente (pac_dnsc, pac_peso, pac_altura, pac_pes_id) VALUES(str_to_date('${this.dnsc}','%Y/%m/%d'), '${this.peso}', '${this.altura}', '${this.pessoa}') `);
         this.pessoa = await Pessoa.getOneById(this.pessoa)
         return info.insertId
     }
@@ -23,17 +23,23 @@ class Paciente {
         let pacientes = []
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
-
-                const query = await pool.query(`SELECT pac_med_pac_id"id" FROM pacientemedico WHERE pac_med_med_id = ${id}`);
+                const query = await pool.query('SELECT pac_med_pac_id"id" FROM pacientemedico WHERE pac_med_med_id =' + id);
                 for (const element of query) {
                     let query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = ${element.id}`);
                     let pessoa = await Pessoa.getOneById(query[0].pes_id);
-                    pacientes.push(new Paciente({ ...query[0], pessoa: pessoa }))
+        
+                    pacientes.push(new Paciente({
+                        id: query[0].id,
+                        dnsc: query[0].dnsc,
+                        peso: query[0].peso,
+                        altura: query[0].altura,
+                        pessoa: pessoa
+                    }))
                 }
                 return pacientes
             } catch (err) {
                 console.log(err);
-                return { status: 500, data: err }
+                return err
             }
         } else {
             console.log("Invalid id");
@@ -41,18 +47,21 @@ class Paciente {
         }
     }
 
-
     static async getOneById(id) {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
                 let query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE WHERE pac_id = ${id}`);
-                query = query[0]
-                let pessoa = await Pessoa.getOneById(query.pes_id);
-                let paciente = new Paciente({ pessoa: pessoa, ...query })
+                let pessoa = await Pessoa.getOneById(query[0].pes_id);
+                let paciente = new Paciente({
+                    pessoa: pessoa, id: query[0].id,
+                    dnsc: query[0].dnsc,
+                    peso: query[0].peso,
+                    altura: query[0].altura
+                })
                 return paciente
             } catch (err) {
                 console.log(err);
-                return { status: 500, data: err }
+                return err
             }
         } else {
             console.log("Invalid id");
@@ -66,12 +75,18 @@ class Paciente {
             const query = await pool.query(`SELECT pac_id"id", pac_dnsc"dnsc", pac_peso"peso", pac_altura"altura", pac_pes_id"pes_id" FROM PACIENTE`);
             for (const element of query) {
                 let pessoa = await Pessoa.getOneById(element.pes_id);
-                pacientes.push(new Paciente({ ...element, pessoa: pessoa }))
+                pacientes.push(new Paciente({
+                    id: element.id,
+                    dnsc: element.dnsc,
+                    peso: element.peso,
+                    altura: element.altura,
+                    pessoa: pessoa
+                }))
             }
             return pacientes
         } catch (err) {
             console.log(err);
-            return { status: 500, data: err }
+            return err
         }
     }
 }

@@ -164,3 +164,37 @@ body {
       height: 1px;
       background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
     }
+
+.links {
+  margin: 30px;
+  color: black;
+  font-family: "Quicksand CUF",sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.428571429;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid black; 
+  border-radius: 8px;
+  padding: 12px 28px;
+}
+
+.links:link {
+  color: white;
+  text-decoration: none;
+}
+
+.links:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.links:hover {
+  color: black;
+  background-color: white;
+}
+
+.links:active {
+    text-decoration: none;
+    color: white;
+} 

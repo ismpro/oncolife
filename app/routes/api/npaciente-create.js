@@ -10,8 +10,6 @@ module.exports = function () {
 
         let data = JSON.parse(Object.keys(req.body));
 
-        console.log(data)
-
         let pessoa = new Pessoas({ sexo: data.gender, nome: data.nome, idade: 20, num_telm: 962112323 });
         let pessoaId = await pessoa.create();
 

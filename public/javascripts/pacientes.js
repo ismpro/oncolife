@@ -12,36 +12,51 @@ window.onload = async function () {
         for (const element of data) {
             let tr = document.createElement("tr");
             let tdNome = document.createElement("td");
-            let trSexo = document.createElement("td");
-            let trPatolagia = document.createElement("td");
-            let trTratamentos = document.createElement("td");
-            let trMedicacao = document.createElement("td");
+            let tdSexo = document.createElement("td");
+            let tdPatolagia = document.createElement("td");
+            let tdTratamentos = document.createElement("td");
+            let tdMedicacao = document.createElement("td");
 
             tdNome.innerHTML = element.nome;
-            trSexo.innerHTML = element.sexo === 'F' ? 'Feminino' : 'Masculino';
+            if (element.sexo === 'F') {
+                tdSexo.innerHTML = 'Feminino'
+            } else {
+                tdSexo.innerHTML = 'Masculino'
+            }
+            console.log(element)
             let htmlPat = ''
-            element.patologia.forEach((pat, index) => {
-                htmlPat += index > 0 ? `<div class="divider"></div> <p> ${pat}</p>` : `<p>${pat}</p>`
+            element.patologia.forEach(function (pat, index) {
+                if (index > 0) {
+                    htmlPat += `<div class="divider"></div> <p> ${pat}</p>`
+                } else {
+                    htmlPat += `<p>${pat}</p>`
+                }
             });
-
             let htmlTrat = ''
-            element.tratamento.forEach((trat, index) => {
-                htmlTrat += index > 0 ? `<div class="divider"></div> <p> ${trat}</p>` : `<p>${trat}</p>`
+            element.tratamento.forEach(function (trat, index) {
+                if (index > 0) {
+                    htmlTrat += `<div class="divider"></div> <p> ${trat}</p>`
+                } else {
+                    htmlTrat += `<p>${trat}</p>`
+                }
             });
-
             let htmlMed = ''
-            element.medicacao.forEach((med, index) => {
-                htmlMed += index > 0 ? `<div class="divider"></div> <p> ${med}</p>` : `<p>${med}</p>`
+            element.medicacao.forEach(function (med, index) {
+                if (index > 0) {
+                    htmlMed += `<div class="divider"></div> <p> ${med}</p>`
+                } else {
+                    htmlMed += `<p>${med}</p>`
+                }
             });
-            trPatolagia.innerHTML = htmlPat;
-            trTratamentos.innerHTML = htmlTrat
-            trMedicacao.innerHTML = htmlMed
+            tdPatolagia.innerHTML = htmlPat;
+            tdTratamentos.innerHTML = htmlTrat;
+            tdMedicacao.innerHTML = htmlMed;
 
             tr.appendChild(tdNome);
-            tr.appendChild(trSexo);
-            tr.appendChild(trPatolagia);
-            tr.appendChild(trTratamentos);
-            tr.appendChild(trMedicacao);
+            tr.appendChild(tdSexo);
+            tr.appendChild(tdPatolagia);
+            tr.appendChild(tdTratamentos);
+            tr.appendChild(tdMedicacao);
             tr.onclick = gotoPaciente(element.id);
             table.appendChild(tr);
         }

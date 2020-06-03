@@ -31,7 +31,10 @@ class CancroPaciente {
                     let tipoCancro = data[0];
                     let paciente = data[1];
                     tratamentos.push(new CancroPaciente({
-                        ...element, tipo: tipoCancro, paciente: paciente
+                        id: element.id,
+                        est: element.est,
+                        tipo: tipoCancro,
+                        paciente: paciente
                     }))
                 }
                 return tratamentos

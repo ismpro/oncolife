@@ -13,7 +13,7 @@ class Pessoa {
     }
 
     async create() {
-        let pessoa = await pool.query(`INSERT INTO PESSOAS (pes_sexo, pes_nome, pes_idade, pes_num_telm) VALUES('${this.sexo}', '${this.nome}', '${this.idade}', '${this.num_telm}') `);
+        let pessoa = await pool.query(`INSERT INTO PESSOAS (pes_sexo, pes_nome, pes_idade, pes_num_telm) VALUES('${this.sexo}', '${this.nome}', '${this.idade}', '${this.num_telm}')`);
         return pessoa.insertId
     }
 
@@ -21,6 +21,7 @@ class Pessoa {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
                 const query = await pool.query(`SELECT pes_id"id", pes_sexo"sexo", pes_nome"nome", pes_idade"idade", pes_num_telm"num_telm" FROM PESSOAS WHERE pes_id = ${id}`);
+                
                 return new Pessoa(query[0]);
             } catch (err) {
                 console.log(err);
@@ -41,28 +42,6 @@ class Pessoa {
                 return new Pessoa(element)
             });
             return pessoas
-        } catch (err) {
-            console.log(err);
-            return { status: 500, data: err }
-        }
-    }
-
-    static async updateOneById() {
-        try {
-            const sql = "SELECT * FROM PACIENTE";
-            const paciente = await pool.query(sql);
-            return { status: 200, data: paciente };
-        } catch (err) {
-            console.log(err);
-            return { status: 500, data: err }
-        }
-    }
-
-    static async deleteOneById() {
-        try {
-            const sql = "SELECT * FROM PACIENTE";
-            const paciente = await pool.query(sql);
-            return { status: 200, data: paciente };
         } catch (err) {
             console.log(err);
             return { status: 500, data: err }

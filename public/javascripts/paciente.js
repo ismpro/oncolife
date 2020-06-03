@@ -1,6 +1,5 @@
 window.onload = async function () {
 
-    console.log(window.location.pathname)
 
     let data = await $.ajax({
         url: window.location.pathname,
@@ -22,19 +21,31 @@ window.onload = async function () {
 
 
         nome.innerHTML = data.nome
-        sexo.innerHTML = data.sexo === 'F' ? 'Feminino' : 'Masculino';
+        if (data.sexo === 'F') {
+            sexo.innerHTML = 'Feminino'
+        } else {
+            sexo.innerHTML = 'Masculino'
+        }
         dtnc.innerHTML = formatDate(data.dnsc)
         idade.innerHTML = data.idade
         peso.innerHTML = data.peso + ' kg'
         altura.innerHTML = data.altura + ' cm'
         let htmlPat = ''
-        data.patologia.forEach((pat, index) => {
-            htmlPat += index > 0 ? `<div class="divider"></div> <p>${pat.tipo} - ${pat.est}</p>` : `<p>${pat.tipo} - ${pat.est}</p>`
+        data.patologia.forEach(function (pat, index) {
+            if (index > 0) {
+                htmlPat += `<div class="divider"></div> <p>${pat.tipo} - ${pat.est}</p>`
+            } else {
+                htmlPat += `<p>${pat.tipo} - ${pat.est}</p>`
+            }
         });
         cancro.innerHTML = htmlPat
         let htmlTrat = ''
-        data.tratamento.forEach((trat, index) => {
-            htmlTrat += index > 0 ? `<div class="divider"></div> <p> ${trat}</p>` : `<p>${trat}</p>`
+        data.tratamento.forEach(function (trat, index) {
+            if (index > 0) {
+                htmlPat += `<div class="divider"></div> <p> ${trat}</p>`
+            } else {
+                htmlPat += `<p>${trat}</p>`
+            }
         });
         trat.innerHTML = htmlTrat
 
