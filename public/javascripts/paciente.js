@@ -42,13 +42,12 @@ window.onload = async function () {
         let htmlTrat = ''
         data.tratamento.forEach(function (trat, index) {
             if (index > 0) {
-                htmlPat += `<div class="divider"></div> <p> ${trat}</p>`
+                htmlTrat += `<div class="divider"></div> <p>${trat}</p>`
             } else {
-                htmlPat += `<p>${trat}</p>`
+                htmlTrat += `<p>${trat}</p>`
             }
         });
         trat.innerHTML = htmlTrat
-
     } else {
         console.warn('Data invalid')
     }
