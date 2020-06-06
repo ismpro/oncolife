@@ -135,19 +135,19 @@ body {
     }
           
     #table2 {
-    width:100px;
-    height:100px;
-    margin-top: 10%;
-    margin-left: 120%;
-    border-collapse: collapse;
+      width:100px;
+      height:100px;
+      margin-top: 10%;
+      margin-left: 120%;
+      border-collapse: collapse;
     }
           
     th, td {
-    padding:7px;
-    padding-left: 50px;
-    padding-right: 50px;
-    align-items: center;
-    border: 2px solid rgb(43, 226, 217);
+      padding:7px;
+      padding-left: 50px;
+      padding-right: 50px;
+      align-items: center;
+      border: 2px solid rgb(43, 226, 217);
     }
 
 

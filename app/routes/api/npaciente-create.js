@@ -1,9 +1,9 @@
-const Pessoas = require('../../models/Pessoas')
-const Paciente = require('../../models/Paciente')
-const Toma = require('../../models/Toma')
-const Tratamento = require('../../models/Tratamento')
-const TipoCancroPaciente = require('../../models/TipoCancroPaciente')
-const PacienteMedico = require('../../models/PacienteMedico')
+const Pessoas = require('../../models/Pessoas_model')
+const Paciente = require('../../models/Paciente_model')
+const Toma = require('../../models/Toma_model')
+const Tratamento = require('../../models/Tratamento_model')
+const TipoCancroPaciente = require('../../models/TipoCancroPaciente_model')
+const PacienteMedico = require('../../models/PacienteMedico_model')
 
 module.exports = function () {
     return async function (req, res) {

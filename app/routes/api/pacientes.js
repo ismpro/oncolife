@@ -1,14 +1,15 @@
-const Paciente = require('../../models/Paciente')
-const CancroPaciente = require('../../models/CancroPaciente')
-const Tratamento = require('../../models/Tratamento')
-const Toma = require('../../models/Toma')
+const PacienteMedico = require('../../models/PacienteMedico_model')
+const CancroPaciente = require('../../models/CancroPaciente_model')
+const Tratamento = require('../../models/Tratamento_model')
+const Toma = require('../../models/Toma_model')
 
 module.exports = function () {
     return async function (req, res) {
         //5 medico id - José Antunes
-        Paciente.getAllByMecId(5).then(async function (pacientes) {
+        PacienteMedico.getAllPacByMecId(5).then(async function (pacientesMedicos) {
             let alldata = []
-            for (const paciente of pacientes) {
+            for (const pacienteMedico of pacientesMedicos) {
+                const paciente = pacienteMedico.paciente
                 let data = await Promise.all([CancroPaciente.getAllByPacId(paciente.id), Tratamento.getAllByPacId(paciente.id), Toma.getAllByPacId(paciente.id)])
                 alldata.push({
                     id: paciente.id,

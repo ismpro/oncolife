@@ -21,7 +21,6 @@ class Pessoa {
         if (id && !isNaN(id) && Number.isSafeInteger(id)) {
             try {
                 const query = await pool.query(`SELECT pes_id"id", pes_sexo"sexo", pes_nome"nome", pes_idade"idade", pes_num_telm"num_telm" FROM PESSOAS WHERE pes_id = ${id}`);
-                
                 return new Pessoa(query[0]);
             } catch (err) {
                 console.log(err);
@@ -36,15 +35,14 @@ class Pessoa {
     static async getAll() {
         let pessoas = [];
         try {
-            const sql = `SELECT pes_id"id", pes_sexo"sexo", pes_nome"nome", pes_idade"idade", pes_num_telm"num_telm" FROM PESSOAS`;
-            const paciente = await pool.query(sql);
-            pessoas = paciente.map(element => {
-                return new Pessoa(element)
-            });
+            const query = await pool.query(`SELECT pes_id"id", pes_sexo"sexo", pes_nome"nome", pes_idade"idade", pes_num_telm"num_telm" FROM PESSOAS`);
+            for (const element of query) {
+                pessoas.push(new Pessoa(element))
+            }
             return pessoas
         } catch (err) {
             console.log(err);
-            return { status: 500, data: err }
+            return err
         }
     }
 }

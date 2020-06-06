@@ -1,6 +1,6 @@
-const TipoCancro = require('../../models/TipoCancro.js')
-const TipoTratamento = require('../../models/TipoTratamento')
-const Medicacao = require('../../models/Medicacao')
+const TipoCancro = require('../../models/TipoCancro_model.js')
+const TipoTratamento = require('../../models/TipoTratamento_model')
+const Medicacao = require('../../models/Medicacao_model')
 
 module.exports = function () {
     return async function (req, res) {

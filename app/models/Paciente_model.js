@@ -1,5 +1,5 @@
 const pool = require("../connection");
-const Pessoa = require("./Pessoas");
+const Pessoa = require("./Pessoas_model");
 
 class Paciente {
 

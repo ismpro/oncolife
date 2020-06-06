@@ -26,6 +26,20 @@ class Local {
             return "Invalid id"
         }
     }
+
+    static async getAll() {
+        let estadoHumor = []
+        try {
+            let query = await pool.query(`SELECT loc_id"id", loc_nome"nome", loc_morada"morada" FROM local`);
+            for (const element of query) {
+                estadoHumor.push(new Local(element))
+            }
+            return estadoHumor
+        } catch (err) {
+            console.log(err);
+            return err
+        }
+    }
 }
 
 

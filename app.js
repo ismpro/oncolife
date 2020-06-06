@@ -6,7 +6,6 @@ var logger = require('morgan');
 //Config
 var app = express();
 global.appRoot = path.resolve(__dirname);
-const sql = require('./app/connection')
 
 //Middleware
 app.use(logger('dev'));
@@ -17,5 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Adding Routes
 require('./app/routes.js')(app)
+
+const m = require('./app/models/SessaoPaciente_model')
+
+m.getAll(1).then(data => console.log(data));
 
 module.exports = app;
