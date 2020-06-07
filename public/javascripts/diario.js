@@ -52,9 +52,9 @@ function novoDiario(e) {
             })
         }).then((data) => {
             console.log(data)
-            /* if (data) {
+            if (data && typeof data === 'boolean') {
                 window.location.replace(window.location.origin + '/sintomas.html')
-            } */
+            }
         })
     } else {
         console.log('no novo diario')
