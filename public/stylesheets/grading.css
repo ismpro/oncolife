@@ -137,6 +137,7 @@ body {
   main {
     grid-area: main;
     color: #333333;
+    text-align: center;
   }
 
   .button2 {
@@ -207,4 +208,16 @@ body {
     background-color: rgb(43, 226, 217);
     box-shadow: 0 5px aqua;
     transform: translate(4px);
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+
+
+footer {
+text-align: center;
 }

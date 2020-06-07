@@ -137,3 +137,35 @@ body {
     grid-area: main;
     color: #333333;
   }
+
+  .box4 {
+    border: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  .box5 {
+    border: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  } 
+
+  .box6 {
+    border: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  .box7 {
+    border: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  }

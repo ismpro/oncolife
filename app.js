@@ -15,10 +15,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Adding Routes
-require('./app/routes.js')(app)
+app.post('/api/pacientes', require('./routes/pacientes')())
 
-const m = require('./app/models/SessaoPaciente_model')
+app.post('/paciente/:id', require('./routes/paciente')())
 
-m.getAll(1).then(data => console.log(data));
+app.post('/api/npaciente', require('./routes/npaciente')())
+
+app.post('/api/npaciente/create', require('./routes/npaciente-create')())
+
+app.post('/api/grading/:id', require('./routes/grading')())
+
+app.get('/api/sistomas', require('./routes/sistomas')())
+
+app.get('*', function (req, res) {
+    res.status(404).send('Page Not Found');
+})
 
 module.exports = app;

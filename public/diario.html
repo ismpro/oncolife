@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Diáro</title>
   <link rel="stylesheet" href="/stylesheets/diario.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/javascripts/diario.js"></script>
 </head>
 
 <body>
@@ -16,9 +18,10 @@
   </header>
 
   <nav>
-    <a href="paciente1.html" class="button1">Perfil</a>
+    <a href="grading.html" class="button1">Perfil</a>
     <a href="marcacao.html" class="button1">Marcações</a>
     <a href="sintomas.html" class="button1">Sintomas</a>
+    <a href="index.html" class="button1">Logout</a>
   </nav>
 
   <main>
@@ -45,17 +48,7 @@
         <label for="Sintomas">Sintomas:</label>
         <input list="sintomas" name="sintomas">
         <datalist id="sintomas">
-          <option value="Encefaleias">
-          <option value="Perda de apetite">
-          <option value="Fadiga">
-          <option value="Aftas">
-          <option value="Nauseas">
-          <option value="Vómitos">
-          <option value="Problemas renais">
-          <option value="Problemas de deglutição">
-          <option value="Constipação">
-          <option value="Sem sintomas"></option>
-          </option>
+          <option value="Sem sintomas">
         </datalist><br><br>
 
         <p>Classifique o grau do/s seu/s sintoma/s de 0 a 5, sendo o 5 o mais forte e 0 ausência de sintoma/as </p>
