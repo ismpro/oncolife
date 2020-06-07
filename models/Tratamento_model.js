@@ -22,7 +22,7 @@ class Tratamento {
         let data = await Promise.all([Medico.getOneById(this.medico), Paciente.getOneById(this.paciente), TipoTratamento.getOneById(this.tipo), Local.getOneById(this.location)])
         this.location = data[3]
         this.paciente = data[1]
-        this.medico = data[0][0].medico
+        this.medico = data[0].medico
         this.tipo = data[2]
         return info.insertId
     }
@@ -36,7 +36,7 @@ class Tratamento {
                     let data = await Promise.all([Medico.getOneById(element.pac_med_id), Paciente.getOneById(element.pac_id), TipoTratamento.getOneById(element.tp_id), Local.getOneById(element.loc_id)])
                     let location = data[3]
                     let paciente = data[1]
-                    let medico = data[0][0].medico
+                    let medico = data[0].medico
                     let tipo = data[2]
                     tratamentos.push(new Tratamento({
                         id: element.id,
@@ -64,7 +64,7 @@ class Tratamento {
                 let data = await Promise.all([Medico.getOneById(query[0].med_id), Paciente.getOneById(query[0].pac_id), TipoTratamento.getOneById(query[0].tp_id), Local.getOneById(query[0].loc_id)])
                 let location = data[3]
                 let paciente = data[1]
-                let medico = data[0][0].medico
+                let medico = data[0].medico
                 let tipo = data[2]
                 let tratamento = new Tratamento({
                     id: query[0].id,

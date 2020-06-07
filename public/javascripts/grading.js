@@ -7,7 +7,7 @@ window.onload = async function () {
     console.log(query)
 
     let data = await $.ajax({
-        url: "/api/grading/" + query.utilizador,
+        url: "/api/user/" + query.utilizador + '/grading', /* /api/user/:id/grading */
         method: "post",
         dataType: "json"
     });

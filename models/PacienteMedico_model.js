@@ -49,8 +49,6 @@ class PacienteMedico {
             try {
                 const query = await pool.query('SELECT pac_med_id"id", pac_med_med_id"med_id" FROM pacientemedico WHERE pac_med_pac_id =' + id);
                 for (const element of query) {
-                    console.log('element.med_id: ' + element.med_id)
-                    console.log('id: ' + id)
                     let data = await Promise.all([Medico.getOneById(element.med_id), Paciente.getOneById(id)])
                     let paciente = data[1];
                     let medico = data[0];

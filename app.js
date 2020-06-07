@@ -23,9 +23,13 @@ app.post('/api/npaciente', require('./routes/npaciente')())
 
 app.post('/api/npaciente/create', require('./routes/npaciente-create')())
 
-app.post('/api/grading/:id', require('./routes/grading')())
+app.post('/api/user/:id/grading', require('./routes/grading')())
 
 app.get('/api/sistomas', require('./routes/sistomas')())
+
+app.post('/api/diario/create', require('./routes/diario-create')())
+
+app.post('/api/user/:id/sistomas', require('./routes/user-sistomas')())
 
 app.get('*', function (req, res) {
     res.status(404).send('Page Not Found');

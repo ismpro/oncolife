@@ -2,58 +2,61 @@ let sistomas;
 
 window.onload = async function () {
 
-    let data = await $.ajax({
-        url: "/api/sistomas",
-        method: "post",
-        dataType: "json"
-    })
+    let id = sessionStorage.getItem('id')
+    console.log(id)
+    if (id) {
+        let data = await $.ajax({
+            url: "/api/sistomas",
+            method: "get",
+            dataType: "json"
+        })
 
-    sistomas = data;
+        sistomas = data;
 
-    let sintomas = document.getElementById('sintomas');
+        console.log(data)
 
-    for (const ele of sistomas) {
-        let doc = document.createElement('option')
-        doc.innerHTML = ele.nome
-        sintomas.appendChild(doc)
+        let sintomas = document.getElementById('sintoma');
+
+        for (const ele of sistomas) {
+            let doc = document.createElement('option')
+            doc.innerHTML = ele.nome
+            sintomas.appendChild(doc)
+        }
+    } else {
+        window.location.replace(window.location.origin)
     }
 }
 
-function novoPaciente(e) {
+function novoDiario(e) {
     e.preventDefault();
 
-    let nome = document.getElementById('fname').value;
-    let gender;
-    if (document.getElementById('feminino').checked) {
-        gender = 'F'
-    } else if (document.getElementById('masculino').checked) {
-        gender = 'M'
-    } else {
-        gender = 'O'
-    }
+    let id = sessionStorage.getItem('id')
 
-    let pat = document.getElementById('pat').value;
-    let trat = document.getElementById('trat').value;
-    let med = document.getElementById('med').value;
+    let data = document.getElementById('data').value;
+    let time = document.getElementById('appt').value;
 
-    pat = tipocancro.find(function (ele) { return pat === ele.diag })
-    trat = tipotratamento.find(function (ele) { return trat === ele.diag })
-    med = medicacao.find(function (ele) { return med === ele.nome })
+    let sis = document.getElementById('sis').value;
 
-    if (pat && trat && med && nome && gender) {
+    sis = sistomas.find(function (ele) { return sis === ele.nome })
+
+    if (id && sis && time && data) {
         $.ajax({
-            url: "/api/npaciente/create",
+            url: "/api/diario/create",
             method: "post",
             dataType: "json",
             data: JSON.stringify({
-                nome, gender, pat, trat, med
+                id: id,
+                data: data,
+                time: time,
+                sis: sis
             })
         }).then((data) => {
-            if (data) {
-                window.location.replace(window.location.origin + '/paciente.html')
-            }
+            console.log(data)
+            /* if (data) {
+                window.location.replace(window.location.origin + '/sintomas.html')
+            } */
         })
     } else {
-        console.log('no novo paciente')
+        console.log('no novo diario')
     }
 }

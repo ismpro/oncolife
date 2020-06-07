@@ -1,128 +1,40 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sintomas</title>
-    <link rel="stylesheet" href="/stylesheets/sintomas.css">
-  </head>
 
-  <body>
-    <header class="box">
-        <a href="paciente1.html">
+<head>
+  <meta charset="UTF-8">
+  <title>Sintomas</title>
+  <link rel="stylesheet" href="/stylesheets/sintomas.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/javascripts/sistomas.js"></script>
+</head>
+
+<body>
+  <header class="box">
+    <a href="paciente1.html">
       <img src="images/oncolife.png" alt="Oncolife Logo"></a>
-      <section>
-          <h1> Histórico dos Sintomas </h1>
-         </section>
-    </header>
+    <section>
+      <h1> Histórico dos Sintomas </h1>
+    </section>
+  </header>
 
-    <nav>
-        <a href="grading.html" class="button1">Perfil</a>
-        <a href="marcacao.html" class="button1">Marcações</a>
-        <a href="diario.html" class="button1">Diário</a>
-        <a href="index.html" class="button1">Logout</a>
+  <nav>
+    <a href="grading.html" class="button1">Perfil</a>
+    <a href="marcacao.html" class="button1">Marcações</a>
+    <a href="diario.html" class="button1">Diário</a>
+    <a href="index.html" class="button1">Logout</a>
   </nav>
-  
+
   <main>
-        
+
     <table id="table2">
       <tr>
         <th>Data</th>
+        <th>Hora</th>
         <th>Sintomas</th>
-        <th>Grau</th>
-        <th>Descrição</th>
-        <th>Toma da medicação</th>
       </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>     
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-        </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>
-      <tr>
-        <td>dd/mm/aa</td>
-        <td>Sintomas</td>
-        <td>Grau</td>
-        <td>Descrição</td>
-        <td>Sim/não/nao me lembro</td>
-      </tr>       
+      <tbody id="table"></tbody>
     </table>
   </main>
-  </body>
+</body>
+
 </html>
