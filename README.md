@@ -1,4 +1,4 @@
-# Oncolife Website Documentation
+# Oncolife Website
 
 ## Overview
 Oncolife is a specialized platform designed for oncology patients, providing services such as symptom tracking, appointment scheduling, and patient education.
